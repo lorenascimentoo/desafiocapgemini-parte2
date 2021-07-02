@@ -8,6 +8,7 @@ public class DesafiocapgeminiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DesafiocapgeminiApplication.class, args);
+		
 	}
 
 }

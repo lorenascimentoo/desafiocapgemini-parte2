@@ -1,21 +1,36 @@
 package com.desafiocapgemini.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Anuncio implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private Date dataInicial;
 	private Date dataFinal;
 	
+	@ManyToOne
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 	
-	private List<Investimento> investimentos;
+	@OneToMany(mappedBy = "anuncio")
+	private List<Investimento> investimentos = new ArrayList<>();
 	
 	public Anuncio() {
 		
